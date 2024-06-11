@@ -1,20 +1,30 @@
-//
-//  ContentView.swift
-//  Pose
-//
-//  Created by Dylan Reed on 2024-06-11.
-//
-
 import SwiftUI
-
-
 
 struct ContentView: View {
     @StateObject private var model = FrameHandler()
-    
+    @State private var showDrawer = false
+
     var body: some View {
-        FrameView(image: model.frame)
-            .ignoresSafeArea()
+        ZStack {
+            FrameView(image: model.frame)
+                .edgesIgnoringSafeArea(.all)
+                .zIndex(0)
+
+            RecordingButton(model: model)
+                .zIndex(1)
+        }
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.translation.height < -50 {
+                        showDrawer = true
+                    }
+                }
+        )
+        .navigationBarHidden(true)
+        .sheet(isPresented: $showDrawer) {
+            AlbumView()
+        }
     }
 }
 

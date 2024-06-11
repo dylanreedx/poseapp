@@ -1,10 +1,3 @@
-//
-//  FrameView.swift
-//  Pose
-//
-//  Created by Dylan Reed on 2024-06-11.
-//
-
 import SwiftUI
 
 struct FrameView: View {
@@ -13,11 +6,14 @@ struct FrameView: View {
     var body: some View {
         if let image = image {
             Image(image, scale: 1.0, orientation: .up, label: label)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
         } else {
             Color.black
         }
     }
 }
+
 
 #Preview {
     FrameView()

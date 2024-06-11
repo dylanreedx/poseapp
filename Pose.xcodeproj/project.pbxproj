@@ -13,6 +13,9 @@
 		FC7BF9892C1882A7009AA264 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC7BF9882C1882A7009AA264 /* Preview Assets.xcassets */; };
 		FCFBDDCC2C1888A800DC3733 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDDCB2C1888A800DC3733 /* FrameView.swift */; };
 		FCFBDDCE2C18891B00DC3733 /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDDCD2C18891B00DC3733 /* FrameHandler.swift */; };
+		FCFBDE3A2C18BF3800DC3733 /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE392C18BF3800DC3733 /* AlbumManager.swift */; };
+		FCFBDE3C2C18BF7400DC3733 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE3B2C18BF7400DC3733 /* AlbumView.swift */; };
+		FCFBDE3F2C18BFCD00DC3733 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE3E2C18BFCD00DC3733 /* RecordingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		FC7BF98F2C1883A2009AA264 /* Pose.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pose.entitlements; sourceTree = "<group>"; };
 		FCFBDDCB2C1888A800DC3733 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		FCFBDDCD2C18891B00DC3733 /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
+		FCFBDE392C18BF3800DC3733 /* AlbumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
+		FCFBDE3B2C18BF7400DC3733 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		FCFBDE3E2C18BFCD00DC3733 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +62,13 @@
 		FC7BF9802C1882A4009AA264 /* Pose */ = {
 			isa = PBXGroup;
 			children = (
+				FCFBDE382C18BF2A00DC3733 /* Album */,
+				FCFBDE372C18BF1800DC3733 /* Camera */,
+				FCFBDE342C18BBB900DC3733 /* Views */,
 				FC7BF98F2C1883A2009AA264 /* Pose.entitlements */,
 				FC7BF9812C1882A4009AA264 /* PoseApp.swift */,
 				FC7BF9832C1882A4009AA264 /* ContentView.swift */,
 				FCFBDDCB2C1888A800DC3733 /* FrameView.swift */,
-				FCFBDDCD2C18891B00DC3733 /* FrameHandler.swift */,
 				FC7BF9852C1882A7009AA264 /* Assets.xcassets */,
 				FC7BF9872C1882A7009AA264 /* Preview Content */,
 			);
@@ -73,6 +81,39 @@
 				FC7BF9882C1882A7009AA264 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FCFBDE342C18BBB900DC3733 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCFBDE3D2C18BFC400DC3733 /* UI */,
+				FCFBDE3B2C18BF7400DC3733 /* AlbumView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FCFBDE372C18BF1800DC3733 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				FCFBDDCD2C18891B00DC3733 /* FrameHandler.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		FCFBDE382C18BF2A00DC3733 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				FCFBDE392C18BF3800DC3733 /* AlbumManager.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		FCFBDE3D2C18BFC400DC3733 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FCFBDE3E2C18BFCD00DC3733 /* RecordingButton.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +186,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFBDE3A2C18BF3800DC3733 /* AlbumManager.swift in Sources */,
 				FCFBDDCC2C1888A800DC3733 /* FrameView.swift in Sources */,
+				FCFBDE3F2C18BFCD00DC3733 /* RecordingButton.swift in Sources */,
 				FC7BF9842C1882A4009AA264 /* ContentView.swift in Sources */,
+				FCFBDE3C2C18BF7400DC3733 /* AlbumView.swift in Sources */,
 				FCFBDDCE2C18891B00DC3733 /* FrameHandler.swift in Sources */,
 				FC7BF9822C1882A4009AA264 /* PoseApp.swift in Sources */,
 			);
@@ -290,6 +334,7 @@
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "This app uses the media library to get your videos and photos.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture photos and videos.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses thhe microphone to record videos with audio.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app uses the library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +369,7 @@
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "This app uses the media library to get your videos and photos.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to capture photos and videos.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses thhe microphone to record videos with audio.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app uses the library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
