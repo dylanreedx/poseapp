@@ -16,6 +16,8 @@
 		FCFBDE3A2C18BF3800DC3733 /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE392C18BF3800DC3733 /* AlbumManager.swift */; };
 		FCFBDE3C2C18BF7400DC3733 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE3B2C18BF7400DC3733 /* AlbumView.swift */; };
 		FCFBDE3F2C18BFCD00DC3733 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE3E2C18BFCD00DC3733 /* RecordingButton.swift */; };
+		FCFBDE412C18CA5000DC3733 /* VideoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE402C18CA5000DC3733 /* VideoDetailView.swift */; };
+		FCFBDE442C1A06EE00DC3733 /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDE432C1A06EE00DC3733 /* SlideUpTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FCFBDE392C18BF3800DC3733 /* AlbumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
 		FCFBDE3B2C18BF7400DC3733 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		FCFBDE3E2C18BFCD00DC3733 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
+		FCFBDE402C18CA5000DC3733 /* VideoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailView.swift; sourceTree = "<group>"; };
+		FCFBDE432C1A06EE00DC3733 /* SlideUpTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		FC7BF9802C1882A4009AA264 /* Pose */ = {
 			isa = PBXGroup;
 			children = (
+				FCFBDE422C1A06DA00DC3733 /* Transitions */,
 				FCFBDE382C18BF2A00DC3733 /* Album */,
 				FCFBDE372C18BF1800DC3733 /* Camera */,
 				FCFBDE342C18BBB900DC3733 /* Views */,
@@ -88,6 +93,7 @@
 			children = (
 				FCFBDE3D2C18BFC400DC3733 /* UI */,
 				FCFBDE3B2C18BF7400DC3733 /* AlbumView.swift */,
+				FCFBDE402C18CA5000DC3733 /* VideoDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +120,14 @@
 				FCFBDE3E2C18BFCD00DC3733 /* RecordingButton.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		FCFBDE422C1A06DA00DC3733 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				FCFBDE432C1A06EE00DC3733 /* SlideUpTransition.swift */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,11 +200,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFBDE442C1A06EE00DC3733 /* SlideUpTransition.swift in Sources */,
 				FCFBDE3A2C18BF3800DC3733 /* AlbumManager.swift in Sources */,
 				FCFBDDCC2C1888A800DC3733 /* FrameView.swift in Sources */,
 				FCFBDE3F2C18BFCD00DC3733 /* RecordingButton.swift in Sources */,
 				FC7BF9842C1882A4009AA264 /* ContentView.swift in Sources */,
 				FCFBDE3C2C18BF7400DC3733 /* AlbumView.swift in Sources */,
+				FCFBDE412C18CA5000DC3733 /* VideoDetailView.swift in Sources */,
 				FCFBDDCE2C18891B00DC3733 /* FrameHandler.swift in Sources */,
 				FC7BF9822C1882A4009AA264 /* PoseApp.swift in Sources */,
 			);

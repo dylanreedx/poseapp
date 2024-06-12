@@ -5,11 +5,19 @@ import Photos
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
     @Published var isRecording: Bool = false
-
+    
     private var permissionGranted = false
+    
+    // once permission is granted we can use this capture session
     private let captureSession = AVCaptureSession()
+    
+    // not exactly sure, but probably uses other threads
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
+    
+    // this context i do not have any clue
     private let context = CIContext()
+    
+    // recording stuff
     private let videoOutput = AVCaptureVideoDataOutput()
     private let movieFileOutput = AVCaptureMovieFileOutput()
     private let albumName = "Pose App" // Your custom album name
@@ -17,6 +25,8 @@ class FrameHandler: NSObject, ObservableObject {
     override init() {
         super.init()
         checkPermission()
+        
+        // not sure how this is working, i think it is indeed using other threads, idk
         sessionQueue.async { [unowned self] in
             self.setupCaptureSession()
             self.captureSession.startRunning()
@@ -44,26 +54,34 @@ class FrameHandler: NSObject, ObservableObject {
                 self.captureSession.startRunning()
             } else {
                 print("Camera access denied")
-                // Handle denied camera access, e.g., display an alert
+                // TODO: Handle denied camera access, e.g., display an alert
             }
         }
         PHPhotoLibrary.requestAuthorization { status in
             if status != .authorized {
                 print("Photo library access denied")
-                // Handle denied photo library access, e.g., display an alert
+                // TODO: Handle denied photo library access, e.g., display an alert
             }
         }
     }
     func setupCaptureSession() {
         guard permissionGranted else { return }
+        
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera ,for: .video, position: .front) else { return }
         guard let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice) else { return }
+        
+        // idk what the config is:
         captureSession.beginConfiguration()
         captureSession.addInput(videoDeviceInput)
+        
+        // idk what the delegate is, pretty sure it's also something todo with threads
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sampleBufferQueue"))
+        
         captureSession.addOutput(videoOutput)
         captureSession.addOutput(movieFileOutput)
+        
         captureSession.commitConfiguration()
+        
         videoOutput.connection(with: .video)?.videoRotationAngle = 90
         videoOutput.connection(with: .video)?.isVideoMirrored = true
         
@@ -76,7 +94,10 @@ class FrameHandler: NSObject, ObservableObject {
     
     func startRecording() {
         sessionQueue.async {
+            self.isRecording = true
+            
             guard !self.movieFileOutput.isRecording else { return }
+            
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let outputFilePath = documentsDirectory.appendingPathComponent("output.mov").path
             
@@ -88,17 +109,17 @@ class FrameHandler: NSObject, ObservableObject {
             self.movieFileOutput.startRecording(to: fileURL, recordingDelegate: self)
         }
         
-        isRecording = true
     }
     
     func stopRecording() {
         sessionQueue.async {
+            self.isRecording = false
+            
             if self.movieFileOutput.isRecording {
                 self.movieFileOutput.stopRecording()
             }
         }
         
-        isRecording = false
     }
     
     private func saveToAlbum(outputFileURL: URL) {
@@ -126,6 +147,7 @@ class FrameHandler: NSObject, ObservableObject {
         }
     }
     
+    // reminder: the completion closure could 'complete' after the getAlbum func is done
     private func getAlbum(completion: @escaping (PHAssetCollection) -> Void) {
         if let album = fetchAlbum() {
             completion(album)

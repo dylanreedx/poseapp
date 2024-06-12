@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var model = FrameHandler()
-    @State private var showDrawer = false
+    @State private var showAlbumView = false
 
     var body: some View {
         ZStack {
@@ -12,19 +12,23 @@ struct ContentView: View {
 
             RecordingButton(model: model)
                 .zIndex(1)
+
+            if showAlbumView {
+                AlbumView(showAlbumView: $showAlbumView)
+                    .transition(.move(edge: .bottom))
+            }
         }
         .gesture(
             DragGesture()
                 .onEnded { value in
                     if value.translation.height < -50 {
-                        showDrawer = true
+                        withAnimation {
+                            showAlbumView = true
+                        }
                     }
                 }
         )
         .navigationBarHidden(true)
-        .sheet(isPresented: $showDrawer) {
-            AlbumView()
-        }
     }
 }
 
